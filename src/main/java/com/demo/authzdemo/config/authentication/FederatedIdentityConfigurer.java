@@ -13,14 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.demo.authzdemo.federated;
+package com.demo.authzdemo.config.authentication;
 
 import java.util.function.Consumer;
 
-import org.springframework.context.ApplicationContext;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.util.Assert;
@@ -88,7 +86,7 @@ public final class FederatedIdentityConfigurer extends AbstractHttpConfigurer<Fe
 	// @formatter:off
 	@Override
 	public void init(HttpSecurity http) throws Exception {
-		ApplicationContext applicationContext = http.getSharedObject(ApplicationContext.class);
+		/*ApplicationContext applicationContext = http.getSharedObject(ApplicationContext.class);
 		ClientRegistrationRepository clientRegistrationRepository =
 			applicationContext.getBean(ClientRegistrationRepository.class);
 		FederatedIdentityAuthenticationEntryPoint authenticationEntryPoint =
@@ -118,7 +116,7 @@ public final class FederatedIdentityConfigurer extends AbstractHttpConfigurer<Fe
 						authorizationEndpoint.baseUri(baseUri)
 					);
 				}
-			});
+			});*/
 	}
 	// @formatter:on
 

@@ -1,4 +1,4 @@
-package com.demo.authzdemo;
+package com.demo.authzdemo.config.authentication;
 
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;

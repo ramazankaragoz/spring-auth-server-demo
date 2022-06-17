@@ -1,4 +1,4 @@
-package com.demo.authzdemo;
+package com.demo.authzdemo.config.authentication;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.core.user.OAuth2User;

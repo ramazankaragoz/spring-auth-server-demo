@@ -1,7 +1,7 @@
-package com.demo.authzdemo;
+package com.demo.authzdemo.config;
 
-import com.demo.authzdemo.federated.FederatedIdentityConfigurer;
-import com.demo.authzdemo.federated.FederatedIdentityIdTokenCustomizer;
+import com.demo.authzdemo.config.authentication.FederatedIdentityConfigurer;
+import com.demo.authzdemo.config.authentication.UserIdentityIdTokenCustomizer;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.JWKSource;
@@ -19,7 +19,6 @@ import org.springframework.security.config.annotation.web.configuration.OAuth2Au
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.core.oidc.OidcScopes;
-import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.server.authorization.JdbcOAuth2AuthorizationConsentService;
 import org.springframework.security.oauth2.server.authorization.JdbcOAuth2AuthorizationService;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationConsentService;
@@ -48,7 +47,7 @@ public class SecurityConfig {
 
     @Bean
     public OAuth2TokenCustomizer<JwtEncodingContext> idTokenCustomizer() {
-        return new FederatedIdentityIdTokenCustomizer();
+        return new UserIdentityIdTokenCustomizer();
     }
 
     // @formatter:off
@@ -103,9 +102,10 @@ public class SecurityConfig {
     public EmbeddedDatabase embeddedDatabase() {
         // @formatter:off
         return new EmbeddedDatabaseBuilder()
-                .generateUniqueName(true)
+                .generateUniqueName(false)
                 .setType(EmbeddedDatabaseType.H2)
                 .setScriptEncoding("UTF-8")
+                .setName("testdb")
                 .addScript("org/springframework/security/oauth2/server/authorization/oauth2-authorization-schema.sql")
                 .addScript("org/springframework/security/oauth2/server/authorization/oauth2-authorization-consent-schema.sql")
                 .addScript("org/springframework/security/oauth2/server/authorization/client/oauth2-registered-client-schema.sql")

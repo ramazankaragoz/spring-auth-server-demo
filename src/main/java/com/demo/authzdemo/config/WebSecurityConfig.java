@@ -1,11 +1,11 @@
-package com.demo.authzdemo;
+package com.demo.authzdemo.config;
 
-import com.demo.authzdemo.federated.FederatedIdentityConfigurer;
-import com.demo.authzdemo.federated.UserRepositoryOAuth2UserHandler;
+import com.demo.authzdemo.config.authentication.CustomOAuth2UserService;
+import com.demo.authzdemo.service.UserService;
+import com.demo.authzdemo.config.authentication.UserIdentityAuthenticationSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
@@ -21,6 +21,8 @@ public class WebSecurityConfig{
 
     @Autowired
     private CustomOAuth2UserService oauthUserService;
+    @Autowired
+    private UserService userService;
 
     @Bean
     WebSecurityCustomizer webSecurityCustomizer() {
@@ -51,7 +53,7 @@ public class WebSecurityConfig{
                 .oauth2Login()
                 .loginPage("/login")
                 .userInfoEndpoint()
-                .userService(oauthUserService);
+                .userService(oauthUserService).and().successHandler(new UserIdentityAuthenticationSuccessHandler(userService));
 
         return http.build();
     }

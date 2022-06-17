@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.demo.authzdemo.federated;
+package com.demo.authzdemo.config.authentication;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

@@ -1,4 +1,4 @@
-package com.demo.authzdemo;
+package com.demo.authzdemo.config;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 

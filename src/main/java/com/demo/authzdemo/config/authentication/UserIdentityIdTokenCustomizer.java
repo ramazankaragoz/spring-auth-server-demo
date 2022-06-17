@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.demo.authzdemo.federated;
+package com.demo.authzdemo.config.authentication;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -38,7 +38,7 @@ import org.springframework.security.oauth2.server.authorization.token.OAuth2Toke
  * @author Steve Riesenberg
  * @since 0.2.3
  */
-public final class FederatedIdentityIdTokenCustomizer implements OAuth2TokenCustomizer<JwtEncodingContext> {
+public final class UserIdentityIdTokenCustomizer implements OAuth2TokenCustomizer<JwtEncodingContext> {
 
 	private static final Set<String> ID_TOKEN_CLAIMS = Collections.unmodifiableSet(new HashSet<>(Arrays.asList(
 			IdTokenClaimNames.ISS,
