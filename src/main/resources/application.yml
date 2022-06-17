@@ -1,0 +1,46 @@
+server:
+  port: 8080
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak-idp:
+            authorization-grant-type: authorization_code
+            provider: keycloak
+            client-id: ${KEYCLOAK_CLIENT_ID:tiga-health-backend}
+            client-secret: ${KEYCLOAK_CLIENT_SECRET:bba118c1-2631-4932-8adc-26d050a73d3a}
+            scope: openid
+            client-name: Sign in with Keycloak
+          github-idp:
+            provider: github
+            client-id: ${GITHUB_CLIENT_ID:9a63074745b59bd26842}
+            client-secret: ${GITHUB_CLIENT_SECRET:a368083754bc4103d81bdb8198b356f3ff717f30}
+            scope: user:email, read:user
+            client-name: Sign in with GitHub
+          google-idp:
+            provider: google
+            client-id: ${GOOGLE_CLIENT_ID:509587247288-a7b89bu5bno40pv75010h7gv3u1p0fnc.apps.googleusercontent.com}
+            client-secret: ${GOOGLE_CLIENT_SECRET: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}
+            scope: openid, https://www.googleapis.com/auth/userinfo.profile, https://www.googleapis.com/auth/userinfo.email
+            client-name: Sign in with Google
+        provider:
+          google:
+            user-name-attribute: email
+          github:
+            user-name-attribute: login
+          keycloak:
+            authorization-uri: https://tigahealth-keycloak-prod.pharmatick.com/auth/realms/tiga-health/protocol/openid-connect/auth
+            token-uri: https://tigahealth-keycloak-prod.pharmatick.com/auth/realms/tiga-health/protocol/openid-connect/token
+            user-info-uri: https://tigahealth-keycloak-prod.pharmatick.com/auth/realms/tiga-health/protocol/openid-connect/userinfo
+            jwk-set-uri: https://tigahealth-keycloak-prod.pharmatick.com/auth/realms/tiga-health/protocol/openid-connect/certs
+            user-name-attribute: preferred_username
+            issuer-uri: https://tigahealth-keycloak-prod.pharmatick.com/auth/realms/tiga-health
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: WARN
+    org.springframework.security: WARN
+    org.springframework.security.oauth2: ERROR
