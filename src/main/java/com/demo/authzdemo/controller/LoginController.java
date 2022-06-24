@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class LoginController {
 
 
-	@GetMapping("/login")
-	public String login() {
+    @GetMapping("/test-login/oauth2")
+    public String login() {
 
-		return "login";
-	}
+        return "test-login";
+    }
 
 }
