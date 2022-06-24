@@ -53,8 +53,8 @@ public class SecurityConfig {
         // @formatter:off
         http
                 .exceptionHandling(exceptions ->
-                        //exceptions.authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint(OAuth2AuthorizationRequestRedirectFilter.DEFAULT_AUTHORIZATION_REQUEST_BASE_URI+"keycloak-idp"))
-                        exceptions.authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login"))
+                        exceptions.authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint(OAuth2AuthorizationRequestRedirectFilter.DEFAULT_AUTHORIZATION_REQUEST_BASE_URI+"/keycloak-idp"))
+                        //exceptions.authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login"))
                 );
         // @formatter:on
         return http.build();
