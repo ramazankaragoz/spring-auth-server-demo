@@ -76,6 +76,7 @@ public class SecurityConfig {
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
                 .redirectUri("https://oidcdebugger.com/debug")
+                .redirectUri("http://127.0.0.1:3000")
                 .scope(OidcScopes.OPENID)
                 .scope("test.read")
                 .scope("test.write")

@@ -43,9 +43,9 @@ spring:
 
 logging:
   level:
-    root: DEBUG
-    org.springframework.web: DEBUG
-    org.springframework.security: DEBUG
-    org.springframework.security.oauth2: DEBUG
-    org.springframework.security.authorization: DEBUG
-    org.springframework.security.authentication: DEBUG
+    root: INFO
+    org.springframework.web: WARN
+    org.springframework.security: WARN
+    org.springframework.security.oauth2: WARN
+    org.springframework.security.authorization: WARN
+    org.springframework.security.authentication: WARN
